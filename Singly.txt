@@ -1,0 +1,80 @@
+//Unit 2 pro 6
+#include<iostream.h>
+#include<conio.h>
+class emp
+{
+ protected:
+ int id;
+ char name[10];
+ int salary;
+ public:
+  void getdata()
+  {
+   cout<<"\nId:";
+   cin>>id;
+   cout<<"name:";
+   cin>>name;
+  }
+  void display()
+  {
+   cout<<"\nId="<<id;
+   cout<<"\nname="<<name;
+  }
+  virtual void pay()=0; //pure virtual function
+};
+class male:public emp
+{
+  int days;
+  int hours;
+  public:
+   void getm()
+   {
+    cout<<"\nEnter days he worked:";
+    cin>>days;
+    cout<<"\nEnter hours he worked:";
+    cin>>hours;
+   }
+   void pay()
+   {
+    salary=(days*hours*100);
+    cout<<"\nSalary="<<salary;
+   }
+};
+class female:public emp
+{
+  int days;
+  int hours;
+  public:
+   void getf()
+   {
+    cout<<"\nEnter days she worked:";
+    cin>>days;
+    cout<<"\nEnter hours she worked:";
+    cin>>hours;
+   }
+   void pay()
+   {
+    salary=(days*40*100);
+    cout<<"\nSalary="<<salary;
+   }
+};
+void main()
+{
+ clrscr();
+ emp *p;
+ male m1;
+ female f1;
+ cout<<"\nEnter details of Male employee:\n";
+ p->getdata();
+ p->display();
+ p=&m1;
+ m1.getm();
+ p->pay();
+ cout<<"\nEnter details of Female employee:\n";
+ p->getdata();
+ p->display();
+ p=&f1;
+ f1.getf();
+ p->pay();
+ getch();
+}
